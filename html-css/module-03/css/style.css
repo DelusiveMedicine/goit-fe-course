@@ -23,19 +23,21 @@ header {
 }
 .nav-panel-item {
     display: inline-block;
+    /* width: 180px; */
 }
 .nav-panel-link {
     text-decoration: none;
     color: #626262;
-    padding: 0 50px;
     line-height: 24px;
+    width: 180px;
+    display: block;
 }
 .nav-panel-link:hover,
 .nav-panel-link:focus {
     color: #03a9f4;
 }
 main {
-    margin: 0 auto 70px;
+    margin: 0 auto;
     max-width: 900px;
     padding: 0;
     font-size: 0;
@@ -45,13 +47,9 @@ main {
     width: 420px;
     vertical-align: top;
     font: normal 14px 'Playfair Display', serif; 
-    margin-bottom: 124px;
 }
 .article-preview:not(:nth-child(2n)) {
     margin-right: 60px;
-}
-.article-preview:nth-last-of-type(-n +2) {
-    margin-bottom: 58px;
 }
 img {
     margin-bottom: 28px;
@@ -68,9 +66,13 @@ h2 {
 }
 p {
     line-height: 24px;
+    margin-bottom: 124px; 
+}
+main .article-preview:nth-last-of-type(-n +2) p {
+    margin-bottom: 58px;
 }
 .load-more-btn {
-    margin: 0 auto;
+    margin: 0 auto  70px;
     padding: 16px 34px;
     display: block;
     border: solid 1px #626262;
