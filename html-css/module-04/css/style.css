@@ -94,7 +94,7 @@ h2::after {
 .product-item {
     margin-right: 30px;
     float: left;
-    background: #e9f0fd;
+    background-color: #e9f0fd;
 }
 .product-item:nth-of-type(4n) {
     margin-right: 0; 
@@ -106,7 +106,6 @@ h2::after {
     display: block;
     width: 256px;
     height: 284px;
-    object-fit: none;
 }
 #rotated {
     transform: rotate(65deg);
