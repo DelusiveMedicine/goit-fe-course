@@ -1,0 +1,263 @@
+body {
+    margin: 0;
+    background-color: #323232;
+}
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+.container {
+    margin: 0 auto;
+    padding: 2px;
+    width: 1114px;
+    max-width: 100%;
+}
+button:hover {
+    cursor: pointer;
+}
+/* HEADER */
+header {
+    padding: 24px 0;
+    background-color: #fff;
+}
+.logo {
+    float: left;
+    text-decoration: none;
+    text-transform: uppercase;
+    font: normal 30px 'Roboto', sans-serif;
+    font-weight: 300;
+    letter-spacing: -0.6px;
+    color: #555252;
+}
+.logo::first-letter {
+    color: #1abc9c;
+    font: normal 30px 'Roboto', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.6px;
+    line-height: 32px;
+}
+/* MENU */
+.nav-bar {
+    padding: 8px 0;
+    float: right;
+    list-style: none;
+}
+.nav-bar-item {
+    float: left; 
+}
+.nav-bar-link {
+    width: 86px;
+    display: block;
+    text-decoration: none;
+    text-transform: uppercase;
+    font: normal 14px 'Open Sans', sans-serif;
+    text-align: center;
+    color: #0f0101;
+    font-weight: 700;
+    letter-spacing: -0.28px;   
+}
+.nav-bar-link:hover {
+    color: #1abc9c;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+}
+/* HEADER-END */
+main {
+    background-color: #e9f0fd;
+    padding: 0 0 100px;
+}
+.slideshow {
+    background: linear-gradient(rgba(0, 0, 0, 0.52) 50%, rgba(0, 0, 0, 0.52) 100%), url("../img/walking-women.jpg") no-repeat center; 
+    background-size: cover;
+    height: 602px;
+    position: relative;
+    margin: 0 0 92px;
+}
+.slideshow-text {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
+}
+h1 {
+    margin: 0 0 26px;
+    font-size: 60px; 
+    font-weight: 600;
+    letter-spacing: -0.8px;
+}
+.slideshow-subtext {
+    font-size: 24px;
+    font-weight: 300;
+    letter-spacing: -0.6px;
+}
+.slideshow-button {
+    padding: 0;
+    width: 104px;
+    height: 104px;
+    background-color: #4ec6ab;
+    border: none;
+    position: absolute;
+    top: 40%;
+}
+.button-prev {
+    left: 15%;
+    transform: translate(-25%,-15%);
+}
+.button-prev::before {
+    content: "";
+    display: inline-block;
+    position: relative;
+    border-left: 4px solid #fff;
+    border-bottom: 4px solid #fff;
+    transform: rotate(45deg);
+    width: 24px;
+    height: 24px;
+    left: 5%;
+}
+.button-next {
+    right: 15%;
+    transform: translate(20%,-10%);
+}
+.button-next::before {
+    content: "";
+    display: inline-block;
+    position: relative;
+    border-top: 4px solid #fff;
+    border-right: 4px solid #fff;
+    transform: rotate(45deg);
+    width: 24px;
+    height: 24px;
+    right: 5%;
+}
+/* NEW COLLECTION */
+h2 {
+    margin: 0 0 102px;
+    position: relative;
+    color: #515151;
+    font: normal 48px 'Roboto', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: -0.96px;
+    text-align: center;
+}
+h2::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    right: 50%;
+    transform: translate(50%, 300%);
+    width: 164px;
+    height: 6px;
+    background-color: #1abc9c;
+}
+.product-item {
+    position: relative;
+    margin-right: 30px;
+    float: left;
+    background-color: #fff;
+}
+.product-item:nth-of-type(4n) {
+    margin-right: 0; 
+}
+.product-item:hover .product-title {
+    background-color: #1abc9c;
+}
+.product-image {
+    display: block;
+    width: 256px;
+    height: 284px;
+    object-fit: cover;
+}
+.product-title {
+    background-color: #323232;
+}
+.product-name {
+    padding: 10px 14px 6px;
+    float: left;
+    text-transform: uppercase;
+    color: #ffffff;
+    font: normal 18px 'Roboto', sans-serif;
+    font-weight: 500;
+    letter-spacing: -0.36px;
+}
+.product-price {
+    padding: 8px; 
+    float: right;
+    box-sizing: border-box;
+    width: 56px;
+    background-color: rgba(255, 255, 255, 0.44);
+    color: #ffffff;
+    font: normal 18px 'Roboto', sans-serif;
+    font-weight: 500;
+    letter-spacing: -0.36px;
+}
+.product-overlay {
+    width: 236px;
+    height: 264px;
+    border: 10px solid rgba(255, 255, 255, 0.55);
+    background-color: rgba(0, 0, 0, 0.55); 
+    opacity: 0;
+    position: absolute; 
+    top: 0;
+    background-clip: content-box;
+}
+.product-item:hover .product-overlay {
+    opacity: 1;
+}
+.product-button-box {
+    width: 166px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+i {
+    display: block;
+    padding: 0;
+    margin: 0;
+    font-size: 30px;
+    text-align: center;
+}
+.product-button {
+    margin: 0 8px 8px 0;
+    padding: 9px;
+    border: 1px solid #fff;
+    background-color: transparent;
+    color: #fff;
+    text-transform: uppercase;
+    float: left;
+}
+.product-button:nth-of-type(3n) {
+    margin-right: 0;
+}
+.product-button:hover {
+    background-color: #1abc9c;
+}
+.product-button-cart {
+    margin: 0;
+    background-color: #323232
+}
+.pe-7s-cart {
+    float: left;
+}
+.cart-text {
+    font: normal 14px 'Open Sans', sans-serif;
+    color: #fff;
+    float: right;
+    padding: 5px 6px 0 20px;
+}
+/* FOOTER */
+footer {
+    font: normal 16px 'Open Sans', sans-serif;
+    text-align: center;
+    color: #fff;
+    font-weight: 300;
+    padding: 34px 0;
+}
+.footer-text {
+    color: #46bfa9;
+}
