@@ -17,8 +17,8 @@ body {
 }
 .container {
     margin: 0 auto;
-    padding: 2px;
-    width: 1114px;
+    padding: 4px;
+    width: 1118px;
     max-width: 100%;
 }
 button:hover {
@@ -26,13 +26,13 @@ button:hover {
 }
 /* HEADER */
 header {
-    padding: 24px 0;
+    padding: 22px 0;
     background-color: var(--secondary-bg-color);
 }
 .logo {
     float: left;
     text-decoration: none;
-    text-transform: var(--text-uppercase);
+    text-transform: uppercase;
     font: normal 30px var(--primary-font);
     font-weight: 300;
     letter-spacing: -0.6px;
@@ -71,14 +71,14 @@ header {
 /* HEADER-END */
 main {
     background-color: #e9f0fd;
-    padding: 0 0 100px;
+    padding: 0 0 98px;
 }
 .slideshow {
     background: linear-gradient(rgba(0, 0, 0, 0.52) 50%, rgba(0, 0, 0, 0.52) 100%), url("../img/walking-women.jpg") no-repeat center; 
     background-size: cover;
     min-height: 602px;
     position: relative;
-    margin: 0 0 92px;
+    margin: 0 0 90px;
 }
 .slideshow-text {
     position: absolute;
@@ -104,10 +104,14 @@ h1 {
     padding: 0;
     width: 104px;
     height: 104px;
-    background-color: #4ec6ab;
+    background-color: rgba(78, 198, 171, 0.63);
     border: none;
     position: absolute;
     top: 40%;
+}
+
+.slideshow-button:hover {
+    background-color: #4ec6ab;
 }
 .button-prev {
     left: 15%;
@@ -141,7 +145,7 @@ h1 {
 }
 /* NEW COLLECTION */
 h2 {
-    margin: 0 0 102px;
+    margin: 0 0 76px;
     color: #515151;
     font: normal 48px var(--primary-font);
     font-weight: 600;
@@ -152,10 +156,10 @@ h2 {
 h2::after {
     content: '';
     display: block;
-    border-bottom: 8px solid var(--primary-theme-color);
+    border-bottom: 6px solid var(--primary-theme-color);
     margin: 0 auto;
     padding: 10px;
-    width: 162px;
+    width: 144px;
 }
 .product-item {
     position: relative;
@@ -172,7 +176,7 @@ h2::after {
 .product-image {
     display: block;
     width: 256px;
-    height: 284px;
+    height: 282px;
     object-fit: cover;
 }
 .product-title {
@@ -188,10 +192,9 @@ h2::after {
     letter-spacing: -0.36px;
 }
 .product-price {
-    padding: 8px; 
+    padding: 8px 12px; 
     float: right;
     box-sizing: border-box;
-    width: 56px;
     background-color: rgba(255, 255, 255, 0.44);
     color: var(--color-white);
     font: normal 18px var(--primary-font);
@@ -200,7 +203,7 @@ h2::after {
 }
 .product-overlay {
     width: 236px;
-    height: 264px;
+    height: 262px;
     border: 10px solid rgba(255, 255, 255, 0.55);
     background-color: rgba(0, 0, 0, 0.55); 
     opacity: 0;
@@ -239,6 +242,7 @@ i {
 }
 .product-button:hover {
     background-color: var(--primary-theme-color);
+    border: 1px solid var(--primary-theme-color);
 }
 .product-button-cart {
     margin: 0;
