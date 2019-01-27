@@ -1,0 +1,257 @@
+@font-face {
+    font-family: 'Roboto Slab';      
+    src: url('../fonts/roboto-slab-v7-latin-regular.woff2') format('woff2'),
+        url('../fonts/roboto-slab-v7-latin-regular.woff') format('woff');
+    font-weight: 400;              
+    font-style: normal;
+}
+
+/* montserrat-regular - latin */
+@font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Montserrat Regular'), local('Montserrat-Regular'),
+         url('../fonts/montserrat-v12-latin-regular.woff2') format('woff2'), 
+         url('../fonts/montserrat-v12-latin-regular.woff') format('woff');
+  }
+  
+  /* montserrat-700 - latin */
+  @font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Montserrat Bold'), local('Montserrat-Bold'),
+         url('../fonts/montserrat-v12-latin-700.woff2') format('woff2'),
+         url('../fonts/montserrat-v12-latin-700.woff') format('woff');
+  }
+
+@font-face {
+    font-family: 'Dancing Script';      
+    src: url('../fonts/dancingscript-regular-webfont.woff2') format('woff2'),
+    url('../fonts/dancingscript-regular-webfont.woff') format('woff');
+    font-weight: 400;              
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Noto Serif';      
+    src: url('../fonts/notoserif-italic-webfont.woff2') format('woff2'),
+    url('../fonts/notoserif-italic-webfont.woff') format('woff');
+    font-weight: 400;              
+    font-style: normal;
+}
+
+.container {
+    width: 940px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+nav {
+    padding: 50px 0;
+}
+
+.nav-bar {
+    width: 480px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: #fed136;
+    font-family: 'Dancing Script', cursive;
+    font-size: 26px;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.nav-bar-link {
+    color: #222;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.nav-bar-link:hover {
+    color: #fed136;
+}
+
+section {
+    padding-top: 66px;
+    padding-bottom: 120px;
+}
+
+h2 {
+    margin-bottom: 14px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 40px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.services-heading {
+    color: #222;
+}
+
+.contact-us-heading {
+    color: #fff;
+}
+
+.section-descr {
+    margin-bottom: 81px;
+    color: #777;
+    font-family: 'Noto Serif', serif;
+    font-size: 16px;
+    font-style: italic;
+    text-align: center;
+}
+
+.service-card-wrapper {
+    width: 950px;
+}
+
+.service-card {
+    padding-top: 92px;
+    position: relative;
+}
+
+.service-card-ecommerce::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 50%;
+    transform: translate(50%, -8%);
+    width: 72px;
+    height: 72px;
+    background: url(../img/Icon-Basket.png) no-repeat center;
+    border-radius: 50%;
+    border: 3px solid #fed136;
+}
+
+.service-card-responsive::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 50%;
+    transform: translate(50%, -8%);
+    width: 72px;
+    height: 72px;
+    background: url(../img/Icon-Laptop.png) no-repeat center;
+    border-radius: 50%;
+    border: 3px solid #fed136;
+}
+
+.service-card-web::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 50%;
+    transform: translate(50%, -8%);
+    width: 72px;
+    height: 72px;
+    background: url(../img/Icon-Locked.png) no-repeat center;
+    border-radius: 50%;
+    border: 3px solid #fed136;
+}
+
+.service-name {
+    margin-bottom: 12px;
+    color: #222;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.service-descr {
+    width: 290px;
+    color: #777;
+    font-family: 'Roboto Slab', serif;
+    font-size: 14px;
+    font-weight: 400;
+    text-align: center;
+    line-height: 1.5;
+}
+
+/* CONTACT US SECTION */
+
+.contact-us-section {
+    padding-top: 106px;
+    background-color: #222;
+    background-image: url(../img/Map\ Image.png);
+    background-position: bottom right;
+    background-repeat: no-repeat;
+}
+
+.form {
+    flex-wrap: wrap;
+}
+
+.form-box-wrapper {
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.form-textbox {
+    width: 434px;
+    height: 50px;
+    padding: 0;
+    padding-left: 20px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    color: #bbb;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.form-textbox::placeholder {
+    color: #bbb;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+.form-textbox:required:focus:invalid {
+    outline: 1px solid red;
+    border-radius: 2px;
+}
+
+.form-textbox:required:valid {
+    outline: 1px solid green;
+    border-radius: 2px;
+}
+
+.form-textarea {
+    margin-bottom: 30px;
+    padding: 20px 0 0 20px;
+    height: 188px;
+}
+
+.form-btn {
+    margin: auto;
+    border: none;
+    width: 240px;
+    padding: 20px 24px;
+    background-color: #fed136;
+    border-radius: 3px;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
