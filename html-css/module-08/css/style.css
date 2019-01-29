@@ -68,6 +68,10 @@
     height: auto;
 }
 
+button:hover {
+    cursor: pointer;
+}
+
 header {
     padding-bottom: 140px;
     background-image: url(../img/people-laughing.png);
