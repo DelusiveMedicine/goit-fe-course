@@ -104,7 +104,7 @@ nav {
     border: none;
 }
 
-.nav-btn-brdr {
+.nav-btn:hover {
     border: 2px solid white;
 }
 
