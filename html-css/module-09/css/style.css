@@ -63,10 +63,14 @@
          url('../fonts/roboto-v18-latin-regular.woff') format('woff'); 
 }
 
-.container {
+.container-fluid {
     max-width: 100%;
     padding: 0;
     padding-bottom: 138px;
+}
+
+.row {
+    margin: 0;
 }
 
 button:hover {
@@ -270,7 +274,7 @@ p {
 }
 
 @media (min-width: 768px) and (max-width: 1439px) {
-    .container {
+    .container-fluid {
         max-width: 100%;
         padding-bottom: 234px;
     }
@@ -331,7 +335,7 @@ p {
 }
 
 @media (min-width: 1440px) {
-    .container {
+    .container-fluid {
         max-width: 100%;
         padding-bottom: 232px;
     }
