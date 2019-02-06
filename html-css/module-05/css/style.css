@@ -180,13 +180,17 @@ h2::after {
 .product-item:hover .product-title {
     background-color: var(--primary-theme-color);
 }
+
 .product-image {
     display: block;
     width: 256px;
-    height: 282px;
+    height: 318px;
     object-fit: cover;
 }
 .product-title {
+    position: absolute;
+    bottom: 0;
+    width: 256px;
     background-color: var(--primary-bg-color);
 }
 .product-name {
@@ -235,8 +239,13 @@ i {
     font-size: 30px;
     text-align: center;
 }
+
+.product-button-box-sm {
+    margin-bottom: 8px;
+}
+
 .product-button {
-    margin: 0 8px 8px 0;
+    margin-right: 8px;
     padding: 9px;
     border: 1px solid var(--color-white);
     background-color: transparent;
