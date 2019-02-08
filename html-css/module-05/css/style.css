@@ -227,10 +227,7 @@ h2::after {
 }
 .product-button-box {
     width: 166px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    margin: 78px auto;
 }
 i {
     display: block;
