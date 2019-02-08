@@ -226,13 +226,13 @@ h2 {
     font-weight: 700;
     text-transform: uppercase;
 }
-.form-textbox:required:focus:invalid {
-    outline: 1px solid red;
+.form-textbox:focus:invalid {
+    outline: 2px solid red;
     border-radius: 2px;
 }
 
-.form-textbox:required:valid {
-    outline: 1px solid green;
+.form-textbox:required:focus:valid {
+    outline: 2px solid green;
     border-radius: 2px;
 }
 

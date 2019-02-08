@@ -55,11 +55,11 @@
             <p class="section-descr">Proin iaculis purus consequat sem cure.</p>
             <form action="post" class="container form">
                 <div class="form-box-wrapper">
-                    <input class="form-textbox" type="text" name="name" id="" placeholder="Your name *" required>
+                    <input class="form-textbox" type="text" minlength="2" maxlength="60" name="name" id="" placeholder="Your name *" required>
                     <input class="form-textbox" type="email" name="email" id="" placeholder="Your e-mail *" required>
                     <input class="form-textbox" type="text" name="subj" id="" placeholder="Subject">
                 </div>
-                <textarea class="form-textbox form-textarea" name="message" id="" placeholder="Your message *" required></textarea>
+                <textarea class="form-textbox form-textarea" minlength="5" maxlength="150" name="message" id="" placeholder="Your message *" required></textarea>
                 <button class="form-btn" type="submit">Send message</button>
             </form>
         </section>
