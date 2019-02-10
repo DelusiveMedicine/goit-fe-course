@@ -216,7 +216,6 @@ h2 {
     font-family: 'Montserrat', sans-serif;
     font-size: 14px;
     font-weight: 700;
-    text-transform: uppercase;
 }
 
 .form-textbox::placeholder {
@@ -226,12 +225,14 @@ h2 {
     font-weight: 700;
     text-transform: uppercase;
 }
-.form-textbox:focus:invalid {
+
+.form-textbox:required:invalid {
     outline: 2px solid red;
     border-radius: 2px;
 }
 
-.form-textbox:required:focus:valid {
+
+.form-textbox:required:valid {
     outline: 2px solid green;
     border-radius: 2px;
 }
