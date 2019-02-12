@@ -231,10 +231,13 @@ h2 {
     border-radius: 2px;
 }
 
-
 .form-textbox:required:valid {
     outline: 2px solid green;
     border-radius: 2px;
+}
+
+.form-textbox:required:placeholder-shown {
+    outline: none;
 }
 
 .form-textarea {
