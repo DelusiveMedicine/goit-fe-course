@@ -1,0 +1,80 @@
+body {
+    margin: 0;
+}
+
+.container {
+    width: 1192px;
+    margin: 0 auto;
+    padding: 2px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: $coral;
+    -webkit-transition: all 200ms linear;
+    -o-transition: all 200ms linear;
+    transition: all 200ms linear;
+}
+
+picture {
+    display: block;
+}
+
+header {
+    height: 1000px;
+    background: -webkit-gradient(linear, left top, left bottom, from(rgba(243, 129, 129, 0.9)), to(rgba(252, 227, 138, 0.9))), 
+                url(../images/other/eagle.png) no-repeat center bottom;
+    background: -webkit-linear-gradient(rgba(243, 129, 129, 0.9), rgba(252, 227, 138, 0.9)), 
+                url(../images/other/eagle.png) no-repeat center bottom;
+    background: -o-linear-gradient(rgba(243, 129, 129, 0.9), rgba(252, 227, 138, 0.9)), 
+                url(../images/other/eagle.png) no-repeat center bottom;
+    background: linear-gradient(rgba(243, 129, 129, 0.9), rgba(252, 227, 138, 0.9)), 
+                url(../images/other/eagle.png) no-repeat center bottom;
+
+    @media (-webkit-min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 2/1), (min-resolution: 192dpi), (min-resolution: 2dppx) {
+      background: url(/images/other/eagle@2.png) no-repeat;
+    }
+}
+
+nav {
+    padding: 20px 2px;
+    margin: 0 auto 148px;
+    width: 1192px;
+    max-width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+}
+
+main {
+    padding: 2px;
+    padding-bottom: 78px;
+    max-width: 100%;
+}
+
+footer {
+    width: 1208px;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 8px 2px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    border-top: 1px solid #e5e5e5;
+    color: #333333;
+}

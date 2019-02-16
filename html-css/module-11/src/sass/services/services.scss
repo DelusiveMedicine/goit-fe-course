@@ -1,0 +1,119 @@
+.services {
+    padding-top: 42px;
+
+    &__title {
+        margin-bottom: 14px;
+        display: block;
+        font-size: 24px; 
+        text-align: center;
+        font-family: 'Kaushan Script', cursive;
+    }
+
+    &__subtitle {
+        margin: 0 auto 102px;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+        text-transform: uppercase;
+        text-align: center;
+        position: relative;
+        font-size: 30px;
+
+        &::after {
+            content: "";
+            position: absolute;
+            width: 60px;
+            height: 4px;
+            background-color: var(--secondary-theme-color);
+            top: 205%;
+            -webkit-transform: translateX(-50%);
+                -ms-transform: translateX(-50%);
+                    transform: translateX(-50%);
+            left: 50%;
+        }
+    }
+
+    &__list {
+        padding: 2px 10px;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+        min-height: 246px;
+        -ms-flex-line-pack: justify;
+            align-content: space-between;
+        width: 1182px;
+        list-style: none;
+        max-width: 100%;
+    }
+
+    &__item {
+        padding-left: 82px;
+        width: 300px;
+        position: relative;
+    }
+}
+
+.service__icon-alarm::before {
+    content: "";
+    width: 82px;
+    height: 82px;
+    background: url(../images/services__icons/ALARM.png) no-repeat center top;
+    position: absolute;
+    left: 0;
+}
+.service__icon-graph::before {
+    content: "";
+    width: 82px;
+    height: 82px;
+    background: url(../images/services__icons/GRAPH.png) no-repeat center top;
+    position: absolute;
+    left: 0;
+}
+.service__icon-computer::before {
+    content: "";
+    width: 82px;
+    height: 82px;
+    background: url(../images/services__icons/COMPUTER.png) no-repeat center top;
+    position: absolute;
+    left: 0;
+}
+.service__icon-book::before {
+    content: "";
+    width: 82px;
+    height: 82px;
+    background: url(../images/services__icons/BOOK.png) no-repeat center top;
+    position: absolute;
+    left: 0;
+}
+.service__icon-home::before {
+    content: "";
+    width: 82px;
+    height: 82px;
+    background: url(../images/services__icons/HOME.png) no-repeat center top;
+    position: absolute;
+    left: 0;
+}
+.service__icon-image::before {
+    content: "";
+    width: 82px;
+    height: 82px;
+    background: url(../images/services__icons/IMAGE.png) no-repeat center top;
+    position: absolute;
+    left: 0;
+}
+
+.service__title {
+    margin: 0 0 10px;
+    color: #333;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.service__descr {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    color: #999999;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0.32px;
+}
