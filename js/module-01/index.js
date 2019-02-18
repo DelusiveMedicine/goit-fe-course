@@ -15,11 +15,15 @@ else if (login !== adminLogin) {
     alert('Доступ запрещен, неверный логин!');
 }
 
-else if (login === adminLogin) {
+else {
     password = prompt ('Введите пароль');
 }
 
-if (password === null) {
+if (password === undefined) {
+    ;
+}
+
+else if (password === null) {
     alert('Отменено пользователем!');
 }
 
@@ -27,6 +31,6 @@ else if (password !== adminPassword) {
     alert('Доступ запрещен, неверный пароль!');
 }
 
-else if (password === adminPassword) {
+else {
     alert('Добро пожаловать!');
 }
