@@ -38,9 +38,8 @@ class Hamburger {
    */
   addTopping(topping) {
     if (!this._toppings.includes(topping)) {
-      return this._toppings.push(topping);
+      this._toppings.push(topping);
     }
-    return this._toppings;
   }
 
   /**
@@ -57,7 +56,7 @@ class Hamburger {
    *
    * Попробуйте сделать это геттером чтобы можно было обращаться как obj.toppings и нам вернет массив добавок
    */
-   getToppings() {
+  get getToppings() {
     return this._toppings;
   }
 
@@ -67,7 +66,7 @@ class Hamburger {
    *
    * Попробуйте сделать это геттером чтобы можно было обращаться как obj.size и нам вернет размер
    */
-   getSize() {
+  get getSize() {
     return this._size;
   }
 
@@ -88,10 +87,11 @@ class Hamburger {
    * Попробуйте сделать это геттером чтобы можно было обращаться как obj.price и нам вернет сумму.
    */
   calculatePrice() {
-    let totalToppingsPrice = 0;
-    for (const el of this._toppings){
-      totalToppingsPrice += Hamburger.TOPPINGS[el].price;
-    }
+    let totalToppingsPrice = this._toppings.reduce(
+      (acc, el) => acc + Hamburger.TOPPINGS[el].price,
+      0
+    );
+
     return (
       Hamburger.SIZES[this._size].price +
       Hamburger.STUFFINGS[this._stuffing].price +
@@ -106,10 +106,11 @@ class Hamburger {
    * Попробуйте сделать это геттером чтобы можно было обращаться как obj.calories и нам вернет сумму.
    */
   calculateCalories() {
-    let totalToppingsCal = 0;
-    for (const el of this._toppings){
-      totalToppingsCal += Hamburger.TOPPINGS[el].calories;
-    }
+    let totalToppingsCal = this._toppings.reduce(
+      (acc, el) => acc + Hamburger.TOPPINGS[el].calories,
+      0
+    );
+
     return (
       Hamburger.SIZES[this._size].calories +
       Hamburger.STUFFINGS[this._stuffing].calories +
@@ -193,16 +194,13 @@ hamburger.addTopping(Hamburger.TOPPING_SAUCE);
 console.log("Price with sauce: ", hamburger.calculatePrice());
 
 // Проверить, большой ли гамбургер?
-console.log(
-  "Is hamburger large: ",
-  hamburger.getSize() === Hamburger.SIZE_LARGE
-); // -> false
+console.log("Is hamburger large: ", hamburger.getSize === Hamburger.SIZE_LARGE); // -> false
 
 // Убрать добавку
 hamburger.removeTopping(Hamburger.TOPPING_SPICE);
 
 // Смотрим сколько добавок
-console.log("Hamburger has %d toppings", hamburger.getToppings().length); // 1
+console.log("Hamburger has %d toppings", hamburger.getToppings.length); // 1
 
 /*
   🔔 Обратите внимание на такие моменты:
