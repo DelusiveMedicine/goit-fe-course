@@ -63,8 +63,6 @@ function createPostCard(post) {
   cardBody.append(cardTitle, cardDescr, cardLink);
 
   container.append(card, cardBody);
-  document.body.prepend(container);
-  return document;
 }
 
 function createCards(posts) {
