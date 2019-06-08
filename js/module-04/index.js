@@ -18,26 +18,19 @@ function Cashier(name, productDatabase) {
   };
 
   this.countTotalPrice = function(order) {
-    let productItems = Object.entries(products),
-      orderUnits = Object.entries(order),
+    let orderItems = Object.keys(order),
       price = 0;
-    for (const unit of orderUnits) {
-      for (const item of productItems) {
-        if (item.includes(unit[0])) {
-          price += item[1] * unit[1];
-        }
-      }
+
+    for (const item of orderItems) {
+      price += this.productDatabase[item] * order[item];
     }
     return price;
   };
 
   this.countChange = function(totalPrice) {
-    let change;
-    if (this.customerMoney >= this.countTotalPrice(order)) {
-      change = this.customerMoney - this.countTotalPrice(order);
-      return change;
-    }
-    return null;
+    return this.customerMoney >= this.countTotalPrice(order)
+      ? this.customerMoney - this.countTotalPrice(order)
+      : null;
   };
 
   this.onSuccess = change =>
