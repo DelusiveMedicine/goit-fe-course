@@ -62,12 +62,12 @@ function getUserById(id) {
     .then(response => response.json())
     .then(data => {
       const array = data.data;
-      array.find(user =>
-        id === user.id
-          ? (result.innerHTML = JSON.stringify(user))
-          : (result.textContent =
-              "Ошибка! Пользователя с таким id не существует")
-      );
+      array.find(user => {
+        if (id === user.id) {
+          return (result.innerHTML = JSON.stringify(user));
+        }
+        result.textContent = "Ошибка! Пользователя с таким id не существует";
+      });
     })
     .catch(error => console.log("ERROR" + error));
 }
