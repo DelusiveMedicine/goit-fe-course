@@ -26,46 +26,55 @@ class Stopwatch {
     this.parentNode.append(reset);
     reset.textContent = "Reset";
 
-    startBtn.addEventListener("click", this.startTimer.bind(this));
+    startBtn.addEventListener(
+      "click",
+      this.startTimer.bind(this, clockface, startBtn, reset)
+    );
 
-    reset.addEventListener("click", this.resetTimer.bind(this));
+    reset.addEventListener(
+      "click",
+      this.resetTimer.bind(this, clockface, startBtn)
+    );
 
-    laptime.addEventListener("click", this.getLapTime.bind(this));
+    laptime.addEventListener("click", this.getLapTime.bind(this, clockface));
   }
 
-  startTimer() {
-    console.log(this.parentNode.firstChild)
-    const fn = this;
+  startTimer(clockface, startBtn, reset) {
     this.startTime = new Date() - this.deltaTime;
     this.id = setInterval(() => {
       const currentTime = Date.now();
-
       this.deltaTime = currentTime - this.startTime;
-
-      fn.updateClockface(this.clockface, this.deltaTime);
+      this.updateClockface(clockface, this.deltaTime);
     }, 100);
-    this.startBtn.textContent = "Pause";
-    this.startBtn.removeEventListener("click", this.startTimer);
-    this.startBtn.addEventListener("click", this.stopTimer);
-    this.reset.disabled = false;
+    startBtn.textContent = "Pause";
+
+    reset.disabled = false;
+    if (startBtn.textContent === "Pause") {
+      startBtn.removeEventListener("click", this.startTimer);
+      startBtn.addEventListener(
+        "click",
+        this.stopTimer.bind(this, clockface, startBtn, reset)
+      );
+    }
   }
 
-  stopTimer() {
+  stopTimer(clockface, startBtn, reset) {
     clearInterval(this.id);
-    this.startBtn.textContent = "Continue";
-    this.startBtn.removeEventListener("click", this.stopTimer);
-    this.startBtn.addEventListener("click", this.startTimer);
-    this.reset.disabled = true;
+    startBtn.textContent = "Continue";
+    reset.disabled = true;
+    if (startBtn.textContent === "Continue") {
+      startBtn.addEventListener("click", this.startTimer.bind(this, clockface, startBtn, reset));
+    }
   }
 
-  resetTimer() {
+  resetTimer(clockface, startBtn) {
     clearInterval(this.id);
     this.deltaTime = null;
-    updateClockface(this.clockface, this.deltaTime);
-    
-    this.parentNode.startBtn.textContent = "Start";
-    this.startBtn.removeEventListener("click", this.stopTimer);
-    this.startBtn.addEventListener("click", this.startTimer);
+    this.updateClockface(clockface, this.deltaTime);
+
+    startBtn.textContent = "Start";
+    startBtn.removeEventListener("click", this.stopTimer.bind(this, clockface, startBtn));
+    startBtn.addEventListener("click", this.startTimer.bind(this, clockface, startBtn));
   }
 
   getFormattedTime(time) {
@@ -83,11 +92,13 @@ class Stopwatch {
     elem.textContent = this.getFormattedTime(time);
   }
 
-  getLapTime() {
-    const lapCounter = document.querySelector(".js-laps");
-    const time = this.clockface.textContent;
+  getLapTime(clockface) {
+    
+    const lapCounter = document.createElement("ul");
+    lapCounter.classList.add("js-laps");
+    this.parentNode.append(lapCounter);
+    const time = clockface.textContent;
     this.laps.push(time);
-    console.log(this.laps);
     const timestamps = this.laps.reduce(
       (acc, el) => acc + `<li>${el}</li>`,
       ""
@@ -99,6 +110,3 @@ class Stopwatch {
 const newStopwatch = new Stopwatch(stopwatch);
 
 newStopwatch.createButtons();
-newStopwatch.startTimer();
-
-console.log(newStopwatch);

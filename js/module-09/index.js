@@ -21,18 +21,22 @@ function startTimer() {
 
     updateClockface(clockface, timer.deltaTime);
   }, 100);
+
   startBtn.textContent = "Pause";
-  startBtn.removeEventListener("click", startTimer);
-  startBtn.addEventListener("click", stopTimer);
   reset.disabled = false;
+  if (startBtn.textContent === "Pause") {
+    startBtn.removeEventListener("click", startTimer);
+    startBtn.addEventListener("click", stopTimer);
+  }
 }
 
 function stopTimer() {
   clearInterval(timer.id);
   startBtn.textContent = "Continue";
-  startBtn.removeEventListener("click", stopTimer);
-  startBtn.addEventListener("click", startTimer);
   reset.disabled = true;
+  if (startBtn.textContent === "Continue") {
+    startBtn.addEventListener("click", startTimer);
+  }
 }
 
 function resetTimer() {
@@ -41,7 +45,6 @@ function resetTimer() {
   timer.laps = [];
   updateClockface(clockface, timer.deltaTime);
   startBtn.textContent = "Start";
-  startBtn.removeEventListener("click", stopTimer);
   startBtn.addEventListener("click", startTimer);
 }
 
