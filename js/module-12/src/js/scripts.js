@@ -6,6 +6,13 @@ const result = document.querySelector('.bookmark-list');
 const source = document.getElementById('bookmark-list__item').innerHTML.trim();
 const template = Handlebars.compile(source);
 
+let someUrls = localStorage.getItem('urls')
+  ? JSON.parse(localStorage.getItem('urls'))
+  : [];
+
+const previews = someUrls.reduce((acc, el) => acc + template(el), '');
+result.innerHTML = previews;
+
 form.addEventListener('submit', eventHandler);
 
 const allBookmarks = [];
@@ -47,14 +54,13 @@ function lookUpBookmark(url) {
 
 function addBookmark(bookmarkInfo) {
   allBookmarks.unshift(bookmarkInfo);
-  const someUrls = JSON.parse(localStorage.getItem('urls')) || [];
 
   allBookmarks.forEach(el => someUrls.push(el));
 
   localStorage.setItem('urls', JSON.stringify(someUrls));
 
   input.value = '';
-  return showBookmarks(allBookmarks);
+  showBookmarks(allBookmarks);
 }
 
 function deleteItem(evt) {

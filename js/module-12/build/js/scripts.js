@@ -6757,6 +6757,11 @@ var form = document.querySelector('.bookmark-form');
 var result = document.querySelector('.bookmark-list');
 var source = document.getElementById('bookmark-list__item').innerHTML.trim();
 var template = Handlebars.compile(source);
+var someUrls = localStorage.getItem('urls') ? JSON.parse(localStorage.getItem('urls')) : [];
+var previews = someUrls.reduce(function (acc, el) {
+  return acc + template(el);
+}, '');
+result.innerHTML = previews;
 form.addEventListener('submit', eventHandler);
 var allBookmarks = [];
 
@@ -6801,13 +6806,12 @@ function lookUpBookmark(url) {
 
 function addBookmark(bookmarkInfo) {
   allBookmarks.unshift(bookmarkInfo);
-  var someUrls = JSON.parse(localStorage.getItem('urls')) || [];
   allBookmarks.forEach(function (el) {
     return someUrls.push(el);
   });
   localStorage.setItem('urls', JSON.stringify(someUrls));
   input.value = '';
-  return showBookmarks(allBookmarks);
+  showBookmarks(allBookmarks);
 }
 
 function deleteItem(evt) {
