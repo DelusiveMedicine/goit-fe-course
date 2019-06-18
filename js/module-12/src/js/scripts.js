@@ -43,12 +43,16 @@ function lookUpBookmark(url) {
     .then(response => response.json())
     .then(addBookmark)
     .catch(error => console.log('Error', error));
-
-  localStorage.setItem('urls', JSON.stringify(url));
 }
 
 function addBookmark(bookmarkInfo) {
   allBookmarks.unshift(bookmarkInfo);
+  const someUrls = JSON.parse(localStorage.getItem('urls')) || [];
+
+  allBookmarks.forEach(el => someUrls.push(el));
+
+  localStorage.setItem('urls', JSON.stringify(someUrls));
+
   input.value = '';
   showBookmarks(allBookmarks);
 }
@@ -60,7 +64,7 @@ function deleteItem(evt) {
   arr.find(el => {
     if (el.contains(target)) {
       allBookmarks.splice(arr.indexOf(el));
-      el.remove()
+      el.remove();
     }
   });
 }

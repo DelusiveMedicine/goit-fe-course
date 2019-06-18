@@ -6797,11 +6797,15 @@ function lookUpBookmark(url) {
   }).then(addBookmark).catch(function (error) {
     return console.log('Error', error);
   });
-  localStorage.setItem('urls', JSON.stringify(url));
 }
 
 function addBookmark(bookmarkInfo) {
   allBookmarks.unshift(bookmarkInfo);
+  var someUrls = JSON.parse(localStorage.getItem('urls')) || [];
+  allBookmarks.forEach(function (el) {
+    return someUrls.push(el);
+  });
+  localStorage.setItem('urls', JSON.stringify(someUrls));
   input.value = '';
   showBookmarks(allBookmarks);
 }
