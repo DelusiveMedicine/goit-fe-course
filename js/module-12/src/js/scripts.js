@@ -54,7 +54,7 @@ function addBookmark(bookmarkInfo) {
   localStorage.setItem('urls', JSON.stringify(someUrls));
 
   input.value = '';
-  showBookmarks(allBookmarks);
+  return showBookmarks(allBookmarks);
 }
 
 function deleteItem(evt) {
