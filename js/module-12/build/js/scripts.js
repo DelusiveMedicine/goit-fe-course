@@ -1,3 +1,38 @@
+'use strict';
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
+function addBookmark(bookmarkInfo) {
+  allBookmarks.unshift(bookmarkInfo);
+  allBookmarks = _toConsumableArray(allBookmarks);
+  localStorage.setItem('urls', JSON.stringify(allBookmarks));
+  input.value = '';
+  showBookmarks(allBookmarks);
+}
+'use strict';
+
+var result = document.querySelector('.bookmark-list');
+result.addEventListener('click', deleteItem);
+
+function deleteItem(evt) {
+  var target = evt.target;
+  var targetDataSet = target.dataset.url;
+  var targetParent = target.parentNode;
+
+  if (target.tagName === 'BUTTON') {
+    targetParent.remove();
+    allBookmarks = allBookmarks.filter(function (el) {
+      return el.url !== targetDataSet;
+    });
+    localStorage.setItem('urls', JSON.stringify(allBookmarks));
+  }
+}
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -6750,45 +6785,20 @@ THE SOFTWARE.
 });
 
 ;
-'use strict';
+"use strict";
+'use stict';
 
-var input = document.querySelector('.bookmark-form__box');
-var form = document.querySelector('.bookmark-form');
 var result = document.querySelector('.bookmark-list');
 var source = document.getElementById('bookmark-list__item').innerHTML.trim();
 var template = Handlebars.compile(source);
-var someUrls = localStorage.getItem('urls') ? JSON.parse(localStorage.getItem('urls')) : [];
-var previews = someUrls.reduce(function (acc, el) {
-  return acc + template(el);
-}, '');
-result.innerHTML = previews;
-form.addEventListener('submit', eventHandler);
-var allBookmarks = [];
 
-function eventHandler(evt) {
-  evt.preventDefault();
-  validateBookmark(input.value);
+function showBookmarks(arr) {
+  var previews = arr.reduce(function (acc, el) {
+    return acc + template(el);
+  }, '');
+  result.innerHTML = previews;
 }
-
-function validateBookmark(newInput) {
-  var pattern = /^https?:\/\/[\w\/?.&-=]+|http?:\/\/[\w\/?.&-=]+$/g;
-
-  if (!newInput.match(pattern)) {
-    alert('Invalid input');
-    return input.value = '';
-  }
-
-  for (var _i = 0; _i < allBookmarks.length; _i++) {
-    var el = allBookmarks[_i];
-
-    if (el.url === newInput) {
-      alert('This bookmark already exists');
-      return input.value = '';
-    }
-  }
-
-  lookUpBookmark(newInput);
-}
+'use strict';
 
 function lookUpBookmark(url) {
   var apiKey = '5d07709a7e4b03cf4f38d85d743385432afe95e3e2cc5';
@@ -6803,34 +6813,54 @@ function lookUpBookmark(url) {
     return console.log('Error', error);
   });
 }
+'use strict';
 
-function addBookmark(bookmarkInfo) {
-  allBookmarks.unshift(bookmarkInfo);
-  allBookmarks.forEach(function (el) {
-    return someUrls.push(el);
-  });
-  localStorage.setItem('urls', JSON.stringify(someUrls));
-  input.value = '';
-  showBookmarks(allBookmarks);
+var form = document.querySelector('.bookmark-form');
+var input = document.querySelector('.bookmark-form__box');
+form.addEventListener('submit', eventHandler);
+var allBookmarks = localStorage.getItem('urls') ? JSON.parse(localStorage.getItem('urls')) : [];
+showBookmarks(allBookmarks);
+
+function eventHandler(evt) {
+  evt.preventDefault();
+  validateBookmark(input.value);
 }
 
-function deleteItem(evt) {
-  var target = evt.target;
-  var items = result.querySelectorAll('li');
-  var arr = Array.from(items);
-  arr.find(function (el) {
-    if (el.contains(target)) {
-      allBookmarks.splice(arr.indexOf(el));
-      el.remove();
+function validateBookmark(newInput) {
+  var pattern = /^https?:\/\/[\w\/?.&-=]+|http?:\/\/[\w\/?.&-=]+$/g;
+
+  if (!newInput.match(pattern)) {
+    alert('Invalid input');
+    return input.value = '';
+  }
+
+  var _iteratorNormalCompletion = true;
+  var _didIteratorError = false;
+  var _iteratorError = undefined;
+
+  try {
+    for (var _iterator = allBookmarks[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+      var el = _step.value;
+
+      if (el.url === newInput) {
+        alert('This bookmark already exists');
+        return input.value = '';
+      }
     }
-  });
-}
+  } catch (err) {
+    _didIteratorError = true;
+    _iteratorError = err;
+  } finally {
+    try {
+      if (!_iteratorNormalCompletion && _iterator.return != null) {
+        _iterator.return();
+      }
+    } finally {
+      if (_didIteratorError) {
+        throw _iteratorError;
+      }
+    }
+  }
 
-function showBookmarks(arr) {
-  var previews = arr.reduce(function (acc, el) {
-    return acc + template(el);
-  }, '');
-  result.innerHTML = previews;
-  var delBtn = document.getElementById('item__del');
-  delBtn.addEventListener('click', deleteItem);
+  lookUpBookmark(newInput);
 }
