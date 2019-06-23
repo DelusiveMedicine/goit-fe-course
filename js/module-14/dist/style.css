@@ -1,0 +1,7 @@
+ul {
+    list-style: none;
+}
+
+.bookmark-form, h2, .bookmark-list {
+    margin: 50px;
+}
