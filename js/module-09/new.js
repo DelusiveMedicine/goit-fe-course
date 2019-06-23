@@ -51,7 +51,7 @@ class Stopwatch {
     reset.disabled = false;
     if (startBtn.textContent === "Pause") {
       startBtn.removeEventListener("click", this.startTimer);
-      startBtn.addEventListener(
+      return startBtn.addEventListener(
         "click",
         this.stopTimer.bind(this, clockface, startBtn, reset)
       );
@@ -63,7 +63,10 @@ class Stopwatch {
     startBtn.textContent = "Continue";
     reset.disabled = true;
     if (startBtn.textContent === "Continue") {
-      startBtn.addEventListener("click", this.startTimer.bind(this, clockface, startBtn, reset));
+      startBtn.addEventListener(
+        "click",
+        this.startTimer.bind(this, clockface, startBtn, reset)
+      );
     }
   }
 
@@ -73,8 +76,14 @@ class Stopwatch {
     this.updateClockface(clockface, this.deltaTime);
 
     startBtn.textContent = "Start";
-    startBtn.removeEventListener("click", this.stopTimer.bind(this, clockface, startBtn));
-    startBtn.addEventListener("click", this.startTimer.bind(this, clockface, startBtn));
+    startBtn.removeEventListener(
+      "click",
+      this.stopTimer.bind(this, clockface, startBtn)
+    );
+    startBtn.addEventListener(
+      "click",
+      this.startTimer.bind(this, clockface, startBtn)
+    );
   }
 
   getFormattedTime(time) {
@@ -93,7 +102,6 @@ class Stopwatch {
   }
 
   getLapTime(clockface) {
-    
     const lapCounter = document.createElement("ul");
     lapCounter.classList.add("js-laps");
     this.parentNode.append(lapCounter);

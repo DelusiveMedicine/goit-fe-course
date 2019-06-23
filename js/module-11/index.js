@@ -106,6 +106,9 @@ const template = Handlebars.compile(source);
 
 form.addEventListener("submit", eventHandler);
 
+const markup = laptops.reduce((acc, el) => acc + template(el), "");
+container.innerHTML = markup;
+
 function eventHandler(evt) {
   evt.preventDefault();
   collectInputData(inputArr);
@@ -128,12 +131,36 @@ function collectInputData(inputs) {
 }
 
 function filterByInputData(data) {
-  const output = laptops.filter(
-    item =>
+  console.log(data);
+
+  const output = laptops.filter(item => {
+    if (
+      data.size.find(el => el === item.size) &&
+      data.color.find(el => el === item.color) &&
+      data.release_date.find(el => el === item.release_date)
+    ) {
+      return true;
+    }
+    if (
+      (data.size.find(el => el === item.size) &&
+        data.color.find(el => el === item.color)) ||
+      (data.size.find(el => el === item.size) &&
+        data.release_date.find(el => el === item.release_date)) ||
+      (data.color.find(el => el === item.color) &&
+        data.release_date.find(el => el === item.release_date))
+    ) {
+      return true;
+    }
+    if (
       data.size.find(el => el === item.size) ||
       data.color.find(el => el === item.color) ||
       data.release_date.find(el => el === item.release_date)
-  );
+    ) {
+      return true;
+    }
+  });
+
+  console.log(output);
   const markup = output.reduce((acc, el) => acc + template(el), "");
   container.innerHTML = markup;
 }
