@@ -105,9 +105,14 @@ const source = document.querySelector("#item-card").innerHTML.trim();
 const template = Handlebars.compile(source);
 
 form.addEventListener("submit", eventHandler);
+form.addEventListener("reset", resetData);
 
-const markup = laptops.reduce((acc, el) => acc + template(el), "");
-container.innerHTML = markup;
+showFilteredItems(laptops);
+
+function resetData(evt) {
+  evt.preventDefault();
+  showFilteredItems(laptops);
+}
 
 function eventHandler(evt) {
   evt.preventDefault();
@@ -131,36 +136,22 @@ function collectInputData(inputs) {
 }
 
 function filterByInputData(data) {
-  console.log(data);
-
   const output = laptops.filter(item => {
-    if (
-      data.size.find(el => el === item.size) &&
-      data.color.find(el => el === item.color) &&
-      data.release_date.find(el => el === item.release_date)
-    ) {
-      return true;
-    }
-    if (
-      (data.size.find(el => el === item.size) &&
-        data.color.find(el => el === item.color)) ||
-      (data.size.find(el => el === item.size) &&
-        data.release_date.find(el => el === item.release_date)) ||
-      (data.color.find(el => el === item.color) &&
-        data.release_date.find(el => el === item.release_date))
-    ) {
-      return true;
-    }
-    if (
-      data.size.find(el => el === item.size) ||
-      data.color.find(el => el === item.color) ||
-      data.release_date.find(el => el === item.release_date)
-    ) {
-      return true;
-    }
+    const bySize =
+      data.size.length !== 0 ? data.size.includes(item.size) : true;
+    const byColor =
+      data.color.length !== 0 ? data.color.includes(item.color) : true;
+    const byReleaseDate =
+      data.release_date.length !== 0
+        ? data.release_date.includes(item.release_date)
+        : true;
+    return bySize && byColor && byReleaseDate;
   });
 
-  console.log(output);
-  const markup = output.reduce((acc, el) => acc + template(el), "");
+  showFilteredItems(output);
+}
+
+function showFilteredItems(arr) {
+  const markup = arr.reduce((acc, el) => acc + template(el), "");
   container.innerHTML = markup;
 }
