@@ -9,7 +9,6 @@ export default class Controller {
 
   addBookmark(evt) {
     evt.preventDefault();
-    // model.allBookmarks.unshift(data);
 
     this.model.allBookmarks = [...this.model.allBookmarks];
 
