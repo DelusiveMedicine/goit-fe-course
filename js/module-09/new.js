@@ -7,83 +7,106 @@ class Stopwatch {
       (this.deltaTime = null),
       (this.id = null),
       (this.laps = []);
-  }
-  createButtons() {
-    const clockface = document.createElement("p");
-    clockface.classList.add(".js-time");
-    this.parentNode.append(clockface);
-    clockface.textContent = "00:00.0";
-    const startBtn = document.createElement("button");
-    startBtn.classList.add(".js-start");
-    startBtn.textContent = "Start";
-    this.parentNode.append(startBtn);
-    const laptime = document.createElement("button");
-    laptime.classList.add(".js-take-lap");
-    this.parentNode.append(laptime);
-    laptime.textContent = "Lap";
-    const reset = document.createElement("button");
-    reset.classList.add(".js-reset");
-    this.parentNode.append(reset);
-    reset.textContent = "Reset";
-
-    startBtn.addEventListener(
-      "click",
-      this.startTimer.bind(this, clockface, startBtn, reset)
-    );
-
-    reset.addEventListener(
-      "click",
-      this.resetTimer.bind(this, clockface, startBtn)
-    );
-
-    laptime.addEventListener("click", this.getLapTime.bind(this, clockface));
+    this.clockface = null;
+    this.startBtn = null;
+    this.laptime = null;
+    this.reset = null;
+    this.lapCounter = null;
   }
 
-  startTimer(clockface, startBtn, reset) {
+  createStopwatch() {
+    this.createClockface();
+    this.createStartBtn();
+    this.createLaptime();
+    this.createReset();
+    this.createLapCounter();
+    this.startBtnListener();
+
+    this.parentNode.append(
+      this.clockface,
+      this.startBtn,
+      this.laptime,
+      this.reset,
+      this.lapCounter
+    );
+  }
+
+  createClockface() {
+    this.clockface = document.createElement("p");
+    this.clockface.classList.add(".js-time");
+    this.clockface.textContent = "00:00.0";
+  }
+
+  createStartBtn() {
+    this.startBtn = document.createElement("button");
+    this.startBtn.classList.add(".js-start");
+    this.startBtn.textContent = "Start";
+  }
+
+  createLaptime() {
+    this.laptime = document.createElement("button");
+    this.laptime.classList.add(".js-take-lap");
+    this.laptime.textContent = "Lap";
+  }
+
+  createReset() {
+    this.reset = document.createElement("button");
+    this.reset.classList.add(".js-reset");
+    this.reset.textContent = "Reset";
+    this.reset.addEventListener("click", () => {
+      clearInterval(this.id);
+      this.deltaTime = null;
+      this.clockface.textContent = "00:00.0";
+
+      this.startBtn.textContent = "Start";
+    });
+  }
+
+  createLapCounter() {
+    this.lapCounter = document.createElement("ul");
+    this.lapCounter.classList.add("js-laps");
+    this.laptime.addEventListener("click", () => {
+      const time = this.clockface.textContent;
+
+      this.laps.push(time);
+      const timestamps = this.laps.reduce(
+        (acc, el) => acc + `<li>${el}</li>`,
+        ""
+      );
+      this.lapCounter.innerHTML = timestamps;
+    });
+  }
+
+  startBtnListener() {
+    this.startBtn.addEventListener("click", () => {
+      if (this.startBtn.textContent === "Start") {
+        return this.startTimer();
+      }
+      if (this.startBtn.textContent === "Pause") {
+        return this.stopTimer();
+      }
+      if (this.startBtn.textContent === "Continue") {
+        return this.startTimer();
+      }
+    });
+  }
+
+  startTimer() {
     this.startTime = new Date() - this.deltaTime;
     this.id = setInterval(() => {
       const currentTime = Date.now();
       this.deltaTime = currentTime - this.startTime;
-      this.updateClockface(clockface, this.deltaTime);
+      this.updateClockface(this.clockface, this.deltaTime);
     }, 100);
-    startBtn.textContent = "Pause";
+    this.startBtn.textContent = "Pause";
 
-    reset.disabled = false;
-    if (startBtn.textContent === "Pause") {
-      startBtn.removeEventListener("click", this.startTimer);
-      return startBtn.addEventListener(
-        "click",
-        this.stopTimer.bind(this, clockface, startBtn, reset)
-      );
-    }
+    this.reset.disabled = false;
   }
 
-  stopTimer(clockface, startBtn, reset) {
+  stopTimer() {
     clearInterval(this.id);
-    startBtn.textContent = "Continue";
-    reset.disabled = true;
-    if (startBtn.textContent === "Continue") {
-      startBtn.addEventListener(
-        "click",
-        this.startTimer.bind(this, clockface, startBtn, reset)
-      );
-    }
-  }
-
-  resetTimer(clockface, startBtn) {
-    clearInterval(this.id);
-    this.deltaTime = null;
-    this.updateClockface(clockface, this.deltaTime);
-
-    startBtn.textContent = "Start";
-    startBtn.removeEventListener(
-      "click",
-      this.stopTimer.bind(this, clockface, startBtn)
-    );
-    startBtn.addEventListener(
-      "click",
-      this.startTimer.bind(this, clockface, startBtn)
-    );
+    this.startBtn.textContent = "Continue";
+    this.reset.disabled = true;
   }
 
   getFormattedTime(time) {
@@ -101,20 +124,27 @@ class Stopwatch {
     elem.textContent = this.getFormattedTime(time);
   }
 
-  getLapTime(clockface) {
-    const lapCounter = document.createElement("ul");
-    lapCounter.classList.add("js-laps");
-    this.parentNode.append(lapCounter);
-    const time = clockface.textContent;
+  getLapTime() {
+    console.log(this.clockface.textContent);
+    const time = this.clockface.textContent;
+
     this.laps.push(time);
     const timestamps = this.laps.reduce(
       (acc, el) => acc + `<li>${el}</li>`,
       ""
     );
-    lapCounter.innerHTML = timestamps;
+    this.lapCounter.innerHTML = timestamps;
   }
 }
 
-const newStopwatch = new Stopwatch(stopwatch);
+const newStopwatchOne = new Stopwatch(stopwatch);
 
-newStopwatch.createButtons();
+newStopwatchOne.createStopwatch();
+
+const newStopwatchTwo = new Stopwatch(stopwatch);
+
+newStopwatchTwo.createStopwatch();
+
+const newStopwatchThree = new Stopwatch(stopwatch);
+
+newStopwatchThree.createStopwatch();
