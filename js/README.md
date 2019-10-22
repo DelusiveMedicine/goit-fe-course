@@ -19,7 +19,7 @@ https://delusivemedicine.github.io/goit-fe-course/js/module-04/index.html
 https://delusivemedicine.github.io/goit-fe-course/js/module-05/index.html
 
 # Module #6
-## Class (open Console)
+## Classes (open Console)
 https://delusivemedicine.github.io/goit-fe-course/js/module-06/index.html
 
 # Module #7
@@ -48,4 +48,4 @@ https://delusivemedicine.github.io/goit-fe-course/js/module-12/build/index.html
 
 # Module #13
 ## Webpack, MVC Pattern
-https://delusivemedicine.github.io/goit-fe-course/js/module-13/build/index.html
+https://delusivemedicine.github.io/goit-fe-course/js/module-13/dist/index.html
